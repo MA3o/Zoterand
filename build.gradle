@@ -1,0 +1,132 @@
+import groovy.swing.SwingBuilder
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'android'
+
+dependencies {
+    compile 'com.android.support:support-v4:21.0.+'
+    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
+    compile 'com.intellij:annotations:12.0'
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.squareup:otto:1.3.4'
+    compile 'com.google.zxing:android-integration:2.3.0'
+    compile 'com.getbase:floatingactionbutton:1.10.0'
+    compile 'com.nononsenseapps:filepicker:2.2.3'
+}
+
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1440
+        versionName "1.4.4"
+    }
+
+    productFlavors {
+        google
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore")
+            keyAlias "zoterand"
+            storePassword ""
+            keyPassword "" 
+        }
+    }
+
+    buildTypes {
+        release {
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+
+  println taskGraph.allTasks
+  if(taskGraph.hasTask(':zotable:assembleGoogleRelease')) {
+ 
+    def storePass = ''
+    def keyPass = ''
+    if(System.console() == null) {
+      new SwingBuilder().edt {
+        dialog(modal: true, // Otherwise the build will continue running before you closed the dialog
+            title: 'Enter password', // Dialog title
+            alwaysOnTop: true, // pretty much what the name says
+            resizable: false, // Don't allow the user to resize the dialog
+            locationRelativeTo: null, // Place dialog in center of the screen
+            pack: true, // We need to pack the dialog (so it will take the size of it's children)
+            show: true // Let's show it
+        ) {
+          vbox { // Put everything below each other
+            label(text: "Please enter store passphrase:")
+            storeInput = passwordField()
+            label(text: "Please enter key passphrase:")
+            keyInput = passwordField()
+            button(defaultButton: true, text: 'OK', actionPerformed: {
+              storePass = storeInput.password; // Set pass variable to value of input field
+              keyPass = storeInput.password; // Set pass variable to value of input field
+              dispose(); // Close dialog
+            })
+          } // vbox end
+        } // dialog end
+      } // edt end
+    } else {
+      storePass = System.console().readPassword("\nPlease enter store passphrase: ")
+      storePass = new String(storePass)
+      keyPass = System.console().readPassword("\nPlease enter key passphrase: ")
+      keyPass = new String(keyPass)
+    }
+ 
+    if(storePass.size() <= 0) {
+      throw new InvalidUserDataException("You must enter a store password to proceed.")
+    }
+    
+    if(keyPass.size() <= 0) {
+      throw new InvalidUserDataException("You must enter a key password to proceed.")
+    }
+ 
+    // -----
+    // Do what you need to do with pass here!
+    // -----
+        android.signingConfigs.release.storePassword = storePass
+        android.signingConfigs.release.keyPassword = keyPass
+ 
+  } // end if has task
+} // end whenRead
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}

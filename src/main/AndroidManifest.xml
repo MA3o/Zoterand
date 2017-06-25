@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rlien.zoterand.app" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.rlien.zoterand.app.Application"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.rlien.zoterand.app.Activity_Main"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="zotable" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.rlien.zoterand.app.CollectionActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.TagItemsActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.rlien.zoterand.app.ItemActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.rlien.zoterand.app.ItemDataActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.TagActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.CreatorActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.SettingsActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.AttachmentActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.CollectionMembershipActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.RequestActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.rlien.zoterand.app.NoteActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+
+        <activity
+            android:name="com.rlien.zoterand.app.SearchActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+
+        <activity
+            android:name="com.rlien.zoterand.app.Activity_Preference"
+            android:label="@string/title_activity_activity__preference"
+            android:parentActivityName="com.rlien.zoterand.app.Activity_Main"
+            android:theme="@style/PreferencesTheme" >
+        </activity>
+        <activity
+            android:name="com.rlien.zoterand.app.PDFActivity"
+            android:label="Zoterand" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/pdf" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.nononsenseapps.filepicker.FilePickerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/FilePickerTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
