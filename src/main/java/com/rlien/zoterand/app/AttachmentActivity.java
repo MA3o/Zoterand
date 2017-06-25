@@ -117,7 +117,7 @@ public class AttachmentActivity extends ListActivity {
         db = new Database(this);
         
         /* Get the incoming data from the calling activity */
-        final String itemKey = getIntent().getStringExtra("com.mattrobertson.zotable.app.itemKey");
+        final String itemKey = getIntent().getStringExtra("com.rlien.zoterand.app.itemKey");
         Item item = Item.load(itemKey, db);
         this.item = item;
 
@@ -197,7 +197,7 @@ public class AttachmentActivity extends ListActivity {
                 if (row.content.has("note")) {
                     Log.d(TAG, "Trying to start note view activity for: " + row.key);
                     Intent i = new Intent(getBaseContext(), NoteActivity.class);
-                    i.putExtra("com.mattrobertson.zotable.app.attKey", row.key);//row.content.optString("note", ""));
+                    i.putExtra("com.rlien.zoterand.app.attKey", row.key);//row.content.optString("note", ""));
                     startActivity(i);
                 }
                 return true;

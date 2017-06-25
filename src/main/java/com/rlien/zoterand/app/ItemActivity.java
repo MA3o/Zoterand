@@ -233,7 +233,7 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
                 R.color.darkest_blue);
 
         Intent intent = getIntent();
-        collectionKey = intent.getStringExtra("com.mattrobertson.zotable.app.collectionKey");
+        collectionKey = intent.getStringExtra("com.rlien.zoterand.app.collectionKey");
 
         ItemCollection coll = ItemCollection.load(collectionKey, db);
         APIRequest req;
@@ -251,7 +251,7 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
         ItemAdapter adapter = (ItemAdapter) getListAdapter();
         Cursor cur = adapter.getCursor();
 
-        if (intent.getBooleanExtra("com.mattrobertson.zotable.app.rerequest", false)
+        if (intent.getBooleanExtra("com.rlien.zoterand.app.rerequest", false)
                 || cur == null
                 || cur.getCount() == 0) {
 
@@ -282,8 +282,8 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
                     Log.d(TAG, "Loading item data with key: " + item.getKey());
                     // We create and issue a specified intent with the necessary data
                     Intent i = new Intent(getBaseContext(), ItemDataActivity.class);
-                    i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
-                    i.putExtra("com.mattrobertson.zotable.app.itemDbId", item.dbId);
+                    i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
+                    i.putExtra("com.rlien.zoterand.app.itemDbId", item.dbId);
                     startActivity(i);
                 } else {
                     // failed to move cursor-- show a toast
@@ -413,14 +413,14 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
         } else if (query != null) {
             cursor = getCursor(query);
             this.setTitle(getResources().getString(R.string.search_results, query));
-        } else if (intent.getStringExtra("com.mattrobertson.zotable.app.tag") != null) {
-            String tag = intent.getStringExtra("com.mattrobertson.zotable.app.tag");
+        } else if (intent.getStringExtra("com.rlien.zoterand.app.tag") != null) {
+            String tag = intent.getStringExtra("com.rlien.zoterand.app.tag");
             Query q = new Query();
             q.set("tag", tag);
             cursor = getCursor(q);
             this.setTitle(getResources().getString(R.string.tag_viewing_items, tag));
         } else {
-            collectionKey = intent.getStringExtra("com.mattrobertson.zotable.app.collectionKey");
+            collectionKey = intent.getStringExtra("com.rlien.zoterand.app.collectionKey");
 
             ItemCollection coll;
 
@@ -457,7 +457,7 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
                                 Log.d(TAG, "Loading item data with key: " + item.getKey());
                                 // We create and issue a specified intent with the necessary data
                                 Intent i = new Intent(getBaseContext(), ItemDataActivity.class);
-                                i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
+                                i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
                                 startActivity(i);
                             }
                         });
@@ -685,7 +685,7 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
                     Log.d(TAG, "Loading new item data with key: " + itemKey);
                     // We create and issue a specified intent with the necessary data
                     Intent i = new Intent(getBaseContext(), ItemDataActivity.class);
-                    i.putExtra("com.mattrobertson.zotable.app.itemKey", itemKey);
+                    i.putExtra("com.rlien.zoterand.app.itemKey", itemKey);
                     startActivity(i);
                 }
                 return;

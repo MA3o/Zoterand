@@ -220,9 +220,9 @@ public class Fragment_Collections extends Fragment implements SwipeRefreshLayout
         		    	Intent i = new Intent(getActivity().getBaseContext(), ItemActivity.class);
         				if (coll.getSize() == 0) {
         					// Send a message that we need to refresh the collection
-            		    	i.putExtra("com.mattrobertson.zotable.app.rerequest", true);
+            		    	i.putExtra("com.rlien.zoterand.app.rerequest", true);
         				}
-        		    	i.putExtra("com.mattrobertson.zotable.app.collectionKey", coll.getKey());
+        		    	i.putExtra("com.rlien.zoterand.app.collectionKey", coll.getKey());
         		    	startActivity(i);
         			} else {
         				// collection loaded was null. why?
@@ -366,7 +366,7 @@ public class Fragment_Collections extends Fragment implements SwipeRefreshLayout
                                 Log.d(TAG, "Loading item data with key: " + item.getKey());
                                 // We create and issue a specified intent with the necessary data
                                 Intent i = new Intent(getActivity().getBaseContext(), ItemDataActivity.class);
-                                i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
+                                i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
                                 startActivity(i);
                             }
                         });
@@ -467,7 +467,7 @@ public class Fragment_Collections extends Fragment implements SwipeRefreshLayout
                     Log.d(TAG, "Loading new item data with key: " + itemKey);
                     // We create and issue a specified intent with the necessary data
                     Intent i = new Intent(getActivity().getBaseContext(), ItemDataActivity.class);
-                    i.putExtra("com.mattrobertson.zotable.app.itemKey", itemKey);
+                    i.putExtra("com.rlien.zoterand.app.itemKey", itemKey);
                     startActivity(i);
                 }
                 return;

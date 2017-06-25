@@ -278,8 +278,8 @@ public class Fragment_Items extends ListFragment implements SwipeRefreshLayout.O
                     Log.d(TAG, "Loading item data with key: " + item.getKey());
                     // We create and issue a specified intent with the necessary data
                     Intent i = new Intent(getActivity().getBaseContext(), ItemDataActivity.class);
-                    i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
-                    i.putExtra("com.mattrobertson.zotable.app.itemDbId", item.dbId);
+                    i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
+                    i.putExtra("com.rlien.zoterand.app.itemDbId", item.dbId);
                     startActivity(i);
                 } else {
                     // failed to move cursor-- show a toast

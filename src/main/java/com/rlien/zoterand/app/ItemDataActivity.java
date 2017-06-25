@@ -85,13 +85,13 @@ public class ItemDataActivity extends ExpandableListActivity {
         db = new Database(this);
         
         /* Get the incoming data from the calling activity */
-        itemKey = getIntent().getStringExtra("com.mattrobertson.zotable.app.itemKey");
+        itemKey = getIntent().getStringExtra("com.rlien.zoterand.app.itemKey");
         item = Item.load(itemKey, db);
         
         // When an item in the view has been updated via a sync, the temporary key may have
         // been swapped out, so we fall back on the DB ID
         if (item == null) {
-            String itemDbId = getIntent().getStringExtra("com.mattrobertson.zotable.app.itemDbId");
+            String itemDbId = getIntent().getStringExtra("com.rlien.zoterand.app.itemDbId");
             if (itemDbId == null) {
             	Log.d(TAG, "Failed to load item using itemKey and no dbId specified. Give up and finish activity.");
             	finish();
@@ -196,13 +196,13 @@ public class ItemDataActivity extends ExpandableListActivity {
         		}  else if (row.getString("label").equals("creators")) {
         	    	Log.d(TAG, "Trying to start creators activity");
         	    	Intent i = new Intent(getBaseContext(), CreatorActivity.class);
-    		    	i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
+    		    	i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
         	    	startActivity(i);
         	    	return true;
         		} else if (row.getString("label").equals("tags")) {
         	    	Log.d(TAG, "Trying to start tag activity");
         	    	Intent i = new Intent(getBaseContext(), TagActivity.class);
-        	    	i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
+        	    	i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
         	    	startActivity(i);
         			return true;
 	    		} else if (row.getString("label").equals("children")) {
@@ -216,7 +216,7 @@ public class ItemDataActivity extends ExpandableListActivity {
 	    		} else if (row.getString("label").equals("collections")) {
 	    	    	Log.d(TAG, "Trying to start collection membership activity");
 	    	    	Intent i = new Intent(getBaseContext(), CollectionMembershipActivity.class);
-	    	    	i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
+	    	    	i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
 	    	    	startActivity(i);
 	    			return true;
 	    		}
@@ -400,7 +400,7 @@ public class ItemDataActivity extends ExpandableListActivity {
 
         // When an item in the view has been updated via a sync, the temporary key may have been swapped out, so we fall back on the DB ID
         if (item == null) {
-            String itemDbId = getIntent().getStringExtra("com.mattrobertson.zotable.app.itemDbId");
+            String itemDbId = getIntent().getStringExtra("com.rlien.zoterand.app.itemDbId");
             if (itemDbId == null) {
                 Log.d(TAG, "Failed to load item using itemKey and no dbId specified. Give up and finish activity.");
                 finish();

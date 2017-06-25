@@ -105,7 +105,7 @@ public class CollectionActivity extends Activity {
 
         CollectionAdapter collectionAdapter;
         
-        String collectionKey = getIntent().getStringExtra("com.mattrobertson.zotable.app.collectionKey");
+        String collectionKey = getIntent().getStringExtra("com.rlien.zoterand.app.collectionKey");
         if (collectionKey != null) {
 	        ItemCollection coll = ItemCollection.load(collectionKey, db);
 	        // We set the title to the current collection
@@ -132,9 +132,9 @@ public class CollectionActivity extends Activity {
                         Intent i = new Intent(getBaseContext(), ItemActivity.class);
                         if (coll.getSize() == 0) {
                             // Send a message that we need to refresh the collection
-                            i.putExtra("com.mattrobertson.zotable.app.rerequest", true);
+                            i.putExtra("com.rlien.zoterand.app.rerequest", true);
                         }
-                        i.putExtra("com.mattrobertson.zotable.app.collectionKey", coll.getKey());
+                        i.putExtra("com.rlien.zoterand.app.collectionKey", coll.getKey());
                         startActivity(i);
                     } else {
                         // collection loaded was null. why?
