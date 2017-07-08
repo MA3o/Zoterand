@@ -223,6 +223,9 @@ public class ItemActivity extends ListActivity implements SwipeRefreshLayout.OnR
 
         db = new Database(this);
 
+        // MA3o: Fix missing Back-Button
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.items);
 
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
