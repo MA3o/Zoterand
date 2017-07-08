@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="applicationTitle">Zotable: Zotero для Android</string>
+    <string name="applicationTitle">Zoterand: Zotero для Android</string>
     <string name="menu_sync">Синхронизовать</string>
     <string name="menu_new">Добавить</string>
     <string name="menu_delete">Удалить</string>

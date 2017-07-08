@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
-    <string name="app_name">Zotable</string>
-    <string name="applicationTitle">Zotable: Um cliente Zotero para Android</string>
+    <string name="app_name">Zoterand</string>
+    <string name="applicationTitle">Zoterand: Um cliente Zotero para Android</string>
     <string name="menu_sync">Sincronização</string>
     <string name="menu_new">Novo</string>
     <string name="menu_delete">Excluir</string>
