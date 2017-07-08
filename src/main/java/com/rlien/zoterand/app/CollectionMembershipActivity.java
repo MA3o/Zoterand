@@ -82,7 +82,7 @@ public class CollectionMembershipActivity extends Activity {
         db = new Database(this);
                 
         /* Get the incoming data from the calling activity */
-        itemKey = getIntent().getStringExtra("com.mattrobertson.zotable.app.itemKey");
+        itemKey = getIntent().getStringExtra("com.rlien.zoterand.app.itemKey");
         item = Item.load(itemKey, db);
         if (item == null) {
         	Log.e(TAG, "Null item for key: "+itemKey);
