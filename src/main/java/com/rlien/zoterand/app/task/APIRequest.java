@@ -66,7 +66,7 @@ import java.util.UUID;
  * @author ajlyon
  *
  */
-public class APIRequest {
+public class  APIRequest {
 	private static final String TAG = "APIRequest";
 
 	/**

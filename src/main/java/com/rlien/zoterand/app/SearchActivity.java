@@ -64,8 +64,8 @@ public class SearchActivity extends ListActivity {
 
                     if (item != null) {
                         Log.d(TAG, "Loading item data with key: " + item.getKey());
-                        i.putExtra("com.mattrobertson.zotable.app.itemKey", item.getKey());
-                        i.putExtra("com.mattrobertson.zotable.app.itemDbId", item.dbId);
+                        i.putExtra("com.rlien.zoterand.app.itemKey", item.getKey());
+                        i.putExtra("com.rlien.zoterand.app.itemDbId", item.dbId);
                     }
 
                     startActivity(i);
